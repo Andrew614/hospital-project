@@ -8,7 +8,12 @@ import models.Patient;
 
 public class PatientTest {
 
-	Patient patient = new Patient();
+	Patient patient = new Patient("John");
+	
+	@Test
+	public void shouldHaveNameOfJohn() {
+		assertThat(patient.getName(), is("John"));
+	}
 	
 	@Test
 	public void shouldHaveBloodAndHealthLevelOf20And10() {
@@ -39,4 +44,5 @@ public class PatientTest {
 		patient.setHealthLevel(0);
 		assertThat(patient.getHealthLevel(), is(1));
 	}
+	
 }

@@ -11,7 +11,7 @@ import models.Patient;
 public class DoctorTest {
 
 	Doctor doctor = new Doctor("Andrew", "1", "Brain", false);
-	Patient patient = new Patient();
+	Patient patient = new Patient("a");
 	
 	@Test
 	public void shouldReturnTrueWhenPaid() {

@@ -10,7 +10,7 @@ import models.Patient;
 public class NurseTest {
 
 	Nurse nurse = new Nurse("Jackie", "2", 10, false);
-	Patient patient = new Patient();
+	Patient patient = new Patient("b");
 	
 	@Test
 	public void shouldReturnTrueWhenPaid() {

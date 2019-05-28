@@ -2,8 +2,17 @@ package models;
 
 public class Patient {
 	
+	private String name;
 	private int bloodLevel = 20;
 	private int healthLevel = 10;
+	
+	public Patient(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
 
 	public int getBloodLevel() {
 		return bloodLevel;
@@ -32,4 +41,5 @@ public class Patient {
 			this.healthLevel = 1;
 		}
 	}
+	
 }
