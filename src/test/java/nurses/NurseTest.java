@@ -15,7 +15,7 @@ public class NurseTest {
 	@Test
 	public void shouldReturnTrueWhenPaid() {
 		nurse.paySalary();
-		assertThat(nurse.isHasBeenPaid(), is(true));
+		assertThat(nurse.getHasBeenPaid(), is(true));
 	}
 	
 	@Test

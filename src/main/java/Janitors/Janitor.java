@@ -9,7 +9,7 @@ public class Janitor extends Employee{
 	public Janitor(String name, String employeeID, boolean isSweeping, boolean hasBeenPaid) {
 		super(name, employeeID, hasBeenPaid);
 		this.isSweeping = isSweeping;
-		this.salary = 40000;
+		this.setSalary(40000);
 	}
 
 	public boolean isSweeping() {
@@ -22,12 +22,12 @@ public class Janitor extends Employee{
 
 	@Override
 	public void paySalary() {
-		if(!hasBeenPaid) {
-			System.out.println("Janitor " + name + " has been paid $" + salary);
-			hasBeenPaid = true;
+		if(!this.getHasBeenPaid()) {
+			System.out.println("Janitor " + this.getName() + " has been paid $" + this.getSalary());
+			setHasBeenPaid(true);
 		}
 		else {
-			System.out.println("Janitor " + name + " has already been paid");
+			System.out.println("Janitor " + this.getName() + " has already been paid");
 		}
 		
 	}

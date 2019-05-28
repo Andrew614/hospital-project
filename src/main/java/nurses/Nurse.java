@@ -11,7 +11,7 @@ public class Nurse extends Employee implements MedicalEmployee {
 	public Nurse(String name, String employeeID, int numOfPatients, boolean hasBeenPaid) {
 		super(name, employeeID, hasBeenPaid);
 		this.setNumOfPatients(numOfPatients);
-		salary = 50000;
+		this.setSalary(50000);
 	}
 
 	public int getNumOfPatients() {
@@ -34,12 +34,12 @@ public class Nurse extends Employee implements MedicalEmployee {
 
 	@Override
 	public void paySalary() {
-		if(!hasBeenPaid) {
-			System.out.println("Nurse " + name + " has been paid $" + salary);
-			hasBeenPaid = true;
+		if(!this.getHasBeenPaid()) {
+			System.out.println("Nurse " + this.getName() + " has been paid $" + this.getSalary());
+			this.setHasBeenPaid(true);
 		}
 		else {
-			System.out.println("Nurse " + name + " has already been paid");
+			System.out.println("Nurse " + this.getName() + " has already been paid");
 		}
 	}
 

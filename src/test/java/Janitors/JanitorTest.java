@@ -12,7 +12,7 @@ public class JanitorTest {
 	@Test
 	public void shouldReturnTrueWhenPaid() {
 		janitor.paySalary();
-		assertThat(janitor.isHasBeenPaid(), is(true));
+		assertThat(janitor.getHasBeenPaid(), is(true));
 	}
 	
 	@Test

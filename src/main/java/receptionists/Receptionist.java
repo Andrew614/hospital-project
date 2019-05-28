@@ -9,7 +9,7 @@ public class Receptionist extends Employee {
 	public Receptionist(String name, String employeeID, boolean occupiedOnPhone, boolean hasBeenPaid) {
 		super(name, employeeID, hasBeenPaid);
 		this.setOccupiedOnPhone(occupiedOnPhone);
-		this.salary = 45000;
+		this.setSalary(45000);
 	}
 
 	public boolean getOccupiedOnPhone() {
@@ -22,12 +22,12 @@ public class Receptionist extends Employee {
 	
 	@Override
 	public void paySalary() {
-		if(!hasBeenPaid) {
-			System.out.println("Receptionist " + name + " has been paid $" + salary);
-			hasBeenPaid = true;
+		if(!this.getHasBeenPaid()) {
+			System.out.println("Receptionist " + this.getName() + " has been paid $" + this.getSalary());
+			this.setHasBeenPaid(true);
 		}
 		else {
-			System.out.println("Receptionist " + name + " has already been paid");
+			System.out.println("Receptionist " + this.getName() + " has already been paid");
 		}
 	}
 }

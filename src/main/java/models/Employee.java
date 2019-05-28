@@ -2,10 +2,10 @@ package models;
 
 public abstract class Employee {
 
-	protected String name;
-	protected String employeeID;
-	protected int salary;
-	protected boolean hasBeenPaid = false;
+	private String name;
+	private String employeeID;
+	private int salary;
+	private boolean hasBeenPaid = false;
 
 	public Employee(String name, String employeeID, boolean hasBeenPaid) {
 		this.name = name;
@@ -37,7 +37,7 @@ public abstract class Employee {
 		this.salary = salary;
 	}
 
-	public boolean isHasBeenPaid() {
+	public boolean getHasBeenPaid() {
 		return hasBeenPaid;
 	}
 

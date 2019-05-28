@@ -26,7 +26,7 @@ public class Hospital {
 	
 	public void printEmployeeData() {
 		for(Employee employee: employeeData.values()) {
-			System.out.println(employee.name + ", employee ID: " + employee.getEmployeeID() + " is a getting paid " + employee.getSalary() );
+			System.out.println(employee.getName() + ", Employee ID # " + employee.getEmployeeID() + ", has a salary of $" + employee.getSalary() + " a year");
 		}
 	}
 }
