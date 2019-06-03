@@ -11,7 +11,7 @@ public class Hospital {
 	private HashMap<String, Patient> patientData = new HashMap<String, Patient>();
 	
 	public void addEmployee(Employee employee) {
-		employeeData.put(employee.getEmployeeID(), employee);
+		employeeData.put(employee.getName(), employee);
 	}
 	
 	public void addPatient(Patient patient) {
