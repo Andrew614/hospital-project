@@ -31,4 +31,9 @@ public class Janitor extends Employee{
 		}
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "Janitor " + this.getName() + ", Employee ID # " + this.getEmployeeID() + ", has a salary of $" + this.getSalary() + " a year.";
+	}
 }

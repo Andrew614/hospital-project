@@ -19,7 +19,8 @@ public class Application {
 		int userInput = menuAndUserInput(input);
 		while(userInput != 9) {
 			if(userInput == 1) {
-				System.out.println("Enter \"1\" to input data for a doctor\n" + "Enter \"2\" to input data for a nurse\n" + "Enter \"3\" to input data for a receptionist\n" + "Enter \"4\" to input data for a janitor");
+				System.out.println("Enter \"1\" to input data for a doctor\n" + "Enter \"2\" to input data for a nurse\n" 
+				+ "Enter \"3\" to input data for a receptionist\n" + "Enter \"4\" to input data for a janitor");
 				userInput = Integer.parseInt(input.nextLine());
 				switch(userInput) {
 				
@@ -32,8 +33,7 @@ public class Application {
 					paidAnswer = input.nextLine().toLowerCase();
 					if(paidAnswer.equals("yes")) {
 						hasBeenPaid = true;
-					}
-					else {
+					} else {
 						hasBeenPaid = false;
 					}
 					System.out.println("What is " + employeeName + "'s specialty?");
@@ -51,8 +51,7 @@ public class Application {
 					paidAnswer = input.nextLine().toLowerCase();
 					if(paidAnswer.equals("yes")) {
 						hasBeenPaid = true;
-					}
-					else {
+					} else {
 						hasBeenPaid = false;
 					}
 					System.out.println("How many patients does Nurse " + employeeName + " currently have?");
@@ -70,8 +69,7 @@ public class Application {
 					paidAnswer = input.nextLine().toLowerCase();
 					if(paidAnswer.equals("yes")) {
 						hasBeenPaid = true;
-					}
-					else {
+					} else {
 						hasBeenPaid = false;
 					}
 					System.out.println("Is " + employeeName + " on the phone? Yes/No");
@@ -79,8 +77,7 @@ public class Application {
 					boolean onPhone;
 					if(onPhoneAnswer.equals("yes")) {
 						onPhone = true;
-					}
-					else {
+					} else {
 						onPhone = false;
 					}
 					Receptionist receptionist = new Receptionist(employeeName, employeeID, onPhone, hasBeenPaid);
@@ -97,8 +94,7 @@ public class Application {
 					
 					if(paidAnswer.equals("yes")) {
 						hasBeenPaid = true;
-					}
-					else {
+					} else {
 						hasBeenPaid = false;
 					}
 					
@@ -108,8 +104,7 @@ public class Application {
 					
 					if(sweepingAnswer.equals("yes")) {
 						sweeping = true;
-					}
-					else {
+					} else {
 						sweeping = false;
 					}
 					
@@ -117,21 +112,32 @@ public class Application {
 					hospitalDataList.addEmployee(janitor);
 				}
 				userInput = menuAndUserInput(input);
-			}
-			else if(userInput == 2) {
-				System.out.println("Enter the patient name");
+			} else if(userInput == 2) {
+				System.out.println("Enter the patient name:");
 				String patientName = input.nextLine().toUpperCase();
 				Patient patient = new Patient(patientName);
 				hospitalDataList.addPatient(patient);
 				userInput = menuAndUserInput(input);
-			}
-			
-			else if(userInput == 3) {
-				hospitalDataList.printEmployeeData();
+			} else if(userInput == 3) {
+				if(hospitalDataList.getNumEmployees() > 0) {
+					hospitalDataList.payEmployees();
+					userInput = menuAndUserInput(input);					
+				} else {
+					System.out.println("No employee info has been entered.");
+					userInput = menuAndUserInput(input);
+				}
+			} else if(userInput == 4) {
+				System.out.println("The doctor and nurse has taken care of the patient");
 				userInput = menuAndUserInput(input);
-			}
-			
-			else {
+			} else if(userInput == 5) {
+				if(hospitalDataList.getNumEmployees() > 0) {
+					hospitalDataList.printEmployeeData();
+					userInput = menuAndUserInput(input);										
+				} else {
+					System.out.println("No employee info has been entered.");
+					userInput = menuAndUserInput(input);
+				}
+			} else {
 				System.out.println("That is not a valid selection");
 				userInput = menuAndUserInput(input);
 			}
@@ -141,7 +147,9 @@ public class Application {
 
 	private static int menuAndUserInput(Scanner input) {
 		int userInput;
-		System.out.println("Enter \"1\" if you want to input employee data \n" + "Enter \"2\" if you want to input patient data \n" + "Enter \"3\" if you want to see the current list of employees\n" + "Enter \"9\" if you no longer want to enter data");
+		System.out.println("Enter \"1\" if you want to input employee data\n" + "Enter \"2\" if you want to input patient data\n" 
+		+ "Enter \"3\" to pay the employees.\n" + "Enter \"4\" to have a medical employee perform a task.\n"
+		+ "Enter \"5\" if you want to see the current list of employees.\n" +"Enter \"9\" to exit out of the program.");
 		userInput = Integer.parseInt(input.nextLine());
 		return userInput;
 	}

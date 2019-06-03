@@ -34,13 +34,21 @@ public class Doctor extends Employee implements MedicalEmployee {
 	}
 
 	@Override
-	public void drawBlood(Patient patient) {	
+	public void drawBlood(Patient patient) {
 		patient.setBloodLevel(patient.getBloodLevel() - 1);
+		System.out.println("Blood has been drawn from " + patient.getName());
 	}
 
 	@Override
 	public void careForPatient(Patient patient) {
 		patient.setHealthLevel(patient.getHealthLevel() + 10);
+		System.out.println("Doctor " + this.getName() + " has cared for " + patient.getName());
+	}
+	
+	@Override
+	public String toString() {
+		return "Doctor " + this.getName() + ", Employee ID # " + this.getEmployeeID() + ", has a salary of $" + this.getSalary() + " a year. "  + this.getName() 
+		+ " specializes in " + specialty;
 	}
 
 }

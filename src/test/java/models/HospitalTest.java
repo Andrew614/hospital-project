@@ -41,4 +41,28 @@ public class HospitalTest {
 		hospital.addPatient(patient2);
 		assertThat(hospital.getNumPatients(), is(2));
 	}
+	
+	@Test
+	public void shouldReturnTrueIfAndrewIsADoctorAtHospital() {
+		hospital.addEmployee(doctor);
+		assertThat(hospital.isADoctor("Andrew"), is(true));
+	}
+	
+	@Test
+	public void shouldReturnFalseIfAndrewIsNotADoctorAtHospital() {
+		hospital.addEmployee(nurse);
+		assertThat(hospital.isADoctor("Andrew"), is(false));
+	}
+	
+	@Test
+	public void shouldReturnTrueIfaIsAPatientAtHospital() {
+		hospital.addPatient(patient1);
+		assertThat(hospital.isAPatient("a"), is(true));
+	}
+	
+	@Test
+	public void shouldReturnFalseIfaIsNotAPatientAtHospital() {
+		hospital.addPatient(patient2);
+		assertThat(hospital.isAPatient("a"), is(false));
+	}
 }
