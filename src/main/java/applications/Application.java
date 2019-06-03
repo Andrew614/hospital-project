@@ -127,7 +127,30 @@ public class Application {
 					userInput = menuAndUserInput(input);
 				}
 			} else if(userInput == 4) {
-				System.out.println("The doctor and nurse has taken care of the patient");
+				if(hospitalDataList.getNumPatients() <= 0) {
+					System.out.println("There are currently no patients in the hospital.");
+				}
+				else {
+					System.out.println("Enter \"1\" to have the doctor draw blood from the patient.\n Enter \"2\" to have the doctor care for the patient.");
+					System.out.println("Enter \"3\" to have the nurse draw blood from the patient.\n Enter \"4\" to have the nurse care for the patient.");
+					userInput = Integer.parseInt(input.nextLine());
+					hospitalDataList.printPatientList();
+					System.out.println("Which patient would you like to perform the task on?");
+					String patientName = input.nextLine();
+					
+					// checks if the patient is currently a patient at the hospital
+					if(hospitalDataList.isAPatient(patientName)) {
+						switch(userInput) {
+						case 1:
+							hospitalDataList.printDoctorList();
+							System.out.println("Which doctor should draw the blood?");
+							String doctorName = input.nextLine();
+							
+						}
+					} else {	
+						System.out.println(patientName + " is not a current patient at the hospital.");
+					}
+				}
 				userInput = menuAndUserInput(input);
 			} else if(userInput == 5) {
 				if(hospitalDataList.getNumEmployees() > 0) {
