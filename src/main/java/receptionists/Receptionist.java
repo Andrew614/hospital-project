@@ -30,4 +30,9 @@ public class Receptionist extends Employee {
 			System.out.println("Receptionist " + this.getName() + " has already been paid");
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "Receptionist " + this.getName() + ", Employee ID # " + this.getEmployeeID() + ", has a salary of $" + this.getSalary() + " a year.";
+	}
 }

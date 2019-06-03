@@ -25,11 +25,13 @@ public class Nurse extends Employee implements MedicalEmployee {
 	@Override
 	public void drawBlood(Patient patient) {
 		patient.setBloodLevel(patient.getBloodLevel() - 2);
+		System.out.println("Blood has been drawn from " + patient.getName());
 	}
 
 	@Override
 	public void careForPatient(Patient patient) {
 		patient.setHealthLevel(patient.getHealthLevel() + 5);
+		System.out.println("Nurse " + this.getName() + " has cared for " + patient.getName());
 	}
 
 	@Override
@@ -41,6 +43,12 @@ public class Nurse extends Employee implements MedicalEmployee {
 		else {
 			System.out.println("Nurse " + this.getName() + " has already been paid");
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return "Nurse " + this.getName() + ", Employee ID # " + this.getEmployeeID() + ", has a salary of $" + this.getSalary() + " a year. " + this.getName() 
+		+ " currently has " + numOfPatients + " patients.";
 	}
 
 }
