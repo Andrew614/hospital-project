@@ -110,6 +110,7 @@ public class Application {
 					
 					Janitor janitor = new Janitor(employeeName, employeeID, sweeping, hasBeenPaid);
 					hospitalDataList.addEmployee(janitor);
+					break;
 				}
 				userInput = menuAndUserInput(input);
 			} else if(userInput == 2) {
@@ -131,21 +132,61 @@ public class Application {
 					System.out.println("There are currently no patients in the hospital.");
 				}
 				else {
-					System.out.println("Enter \"1\" to have the doctor draw blood from the patient.\n Enter \"2\" to have the doctor care for the patient.");
-					System.out.println("Enter \"3\" to have the nurse draw blood from the patient.\n Enter \"4\" to have the nurse care for the patient.");
+					System.out.println("Enter \"1\" to have the doctor draw blood from the patient.\nEnter \"2\" to have the doctor care for the patient.");
+					System.out.println("Enter \"3\" to have the nurse draw blood from the patient.\nEnter \"4\" to have the nurse care for the patient.");
 					userInput = Integer.parseInt(input.nextLine());
 					hospitalDataList.printPatientList();
 					System.out.println("Which patient would you like to perform the task on?");
-					String patientName = input.nextLine();
-					
+					String patientName = input.nextLine().toUpperCase();
+					String doctorName;
+					String nurseName;
 					// checks if the patient is currently a patient at the hospital
 					if(hospitalDataList.isAPatient(patientName)) {
 						switch(userInput) {
 						case 1:
 							hospitalDataList.printDoctorList();
 							System.out.println("Which doctor should draw the blood?");
-							String doctorName = input.nextLine();
-							
+							doctorName = input.nextLine().toUpperCase();
+							if(hospitalDataList.isADoctor(doctorName)) {
+								Doctor doc = (Doctor) hospitalDataList.getEmployee(doctorName);
+								doc.drawBlood(hospitalDataList.getPatient(patientName));
+							} else {
+								System.out.println(doctorName + " is not a current doctor at the hospital.");
+							}
+							break;
+						case 2:	
+							hospitalDataList.printDoctorList();
+							System.out.println("Which doctor should take care of the patient?");
+							doctorName = input.nextLine().toUpperCase();
+							if(hospitalDataList.isADoctor(doctorName)) {
+								Doctor doc = (Doctor) hospitalDataList.getEmployee(doctorName);
+								doc.careForPatient(hospitalDataList.getPatient(patientName));
+							} else {
+								System.out.println(doctorName + " is not a current doctor at the hospital.");
+							}
+							break;
+						case 3:
+							hospitalDataList.printNurseList();
+							System.out.println("Which nurse should draw the blood?");
+							nurseName = input.nextLine().toUpperCase();
+							if(hospitalDataList.isANurse(nurseName)) {
+								Nurse nurse = (Nurse) hospitalDataList.getEmployee(nurseName);
+								nurse.drawBlood(hospitalDataList.getPatient(patientName));								
+							} else {
+								System.out.println(nurseName + " is not a current nurse at the hospital.");
+							}
+							break;
+						case 4:
+							hospitalDataList.printNurseList();
+							System.out.println("Which nurse should take care of the patient?");
+							nurseName = input.nextLine().toUpperCase();
+							if(hospitalDataList.isANurse(nurseName)) {
+								Nurse nurse = (Nurse) hospitalDataList.getEmployee(nurseName);
+								nurse.careForPatient(hospitalDataList.getPatient(patientName));								
+							} else {
+								System.out.println(nurseName + " is not a current nurse at the hospital.");
+							}
+							break;
 						}
 					} else {	
 						System.out.println(patientName + " is not a current patient at the hospital.");

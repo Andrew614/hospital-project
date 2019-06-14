@@ -22,6 +22,10 @@ public class Hospital {
 		return employeeData.size();
 	}
 	
+	public Employee getEmployee(String name) {
+		return employeeData.get(name);
+	}
+	
 	public Patient getPatient(String name) {
 		return patientData.get(name);
 	}
@@ -69,6 +73,10 @@ public class Hospital {
 	}
 	
 	public boolean isADoctor(String name) {
+		return employeeData.containsKey(name);
+	}
+	
+	public boolean isANurse(String name) {
 		return employeeData.containsKey(name);
 	}
 }
