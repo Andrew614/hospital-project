@@ -55,14 +55,20 @@ public class HospitalTest {
 	}
 	
 	@Test
-	public void shouldReturnTrueIfaIsAPatientAtHospital() {
+	public void shouldReturnTrueIfAIsAPatientAtHospital() {
 		hospital.addPatient(patient1);
 		assertThat(hospital.isAPatient("a"), is(true));
 	}
 	
 	@Test
-	public void shouldReturnFalseIfaIsNotAPatientAtHospital() {
+	public void shouldReturnFalseIfAIsNotAPatientAtHospital() {
 		hospital.addPatient(patient2);
 		assertThat(hospital.isAPatient("a"), is(false));
+	}
+	
+	@Test
+	public void shouldReturnTrueIfJackieIsANurseAtHospital() {
+		hospital.addEmployee(nurse);
+		assertThat(hospital.isANurse("Jackie"), is(true));
 	}
 }
